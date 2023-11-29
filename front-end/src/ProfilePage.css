@@ -1,0 +1,106 @@
+.whole{
+  width: 800px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+  margin-top: 40px;
+  float: none;
+}
+
+.head{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.profileimage{
+    height:160px;
+    width: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+  .info-box {
+    text-align: center;
+    margin-left: 23%;
+    width:400px;
+    border: 5px solid #ccc;
+    background-color: rgb(181, 191, 162); 
+    padding: 10px; 
+    border-radius: 30px; 
+  }
+ .post-pic{
+    height: 250px;
+    width: 250px;
+    padding-left: 5%;
+    object-fit: cover;
+    display: block;
+    border-radius: 30px;
+
+  }
+  .follow{
+    justify-content:center;
+
+    
+  }
+
+  .followers, .following {
+    text-align: center;
+    transform: translateY(-50%);
+    font-weight: bold;
+  }
+
+  .bio {
+    font-weight: bold;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    text-align: left; 
+  }
+  
+  .bio span {
+    display: block;
+    margin-bottom: 8px; 
+  }
+
+  .singlepost{
+
+    margin-bottom:20px;
+  }
+
+  .editbutton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; 
+    margin-bottom: 30px;
+  }
+  
+.editbutton button {
+    height: 40px;
+    width: 80px;
+}
+.post-pox{
+    border: 1px solid #ccc;
+    border-radius:20px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.like{
+    margin-bottom: 10px;
+    color: black;
+    font-weight: bold;
+    text-align: left;
+}
+
+.divider{
+  margin-left: 9%;
+  color:lightslategrey;
+  font-weight: bold;
+}

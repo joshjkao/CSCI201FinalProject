@@ -1,0 +1,82 @@
+.register {
+    width: 100vw;
+    height: 100vh;
+    background-color:#CDA890;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+  }
+
+  .registerLogo {
+    font-size: 50px;
+    font-weight: 800;
+    color: #000000;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-left: 125px;
+  }
+
+  .registerFirstName{
+    display: flex;
+    align-items: center;
+  }
+
+  .registerButton{
+    width: 60%;
+    align-self: center;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: #9D4F1B;
+    color:  #000000;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+}
+  .registerBox{
+    height: auto;
+    width: 500px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 150px;
+}
+
+
+.registerWrapper {
+    width: 70%;
+    height: 70%;
+    display: flex;
+  }
+
+.registerInput{
+    height: 30px;
+    width: 400px;
+    border-radius: 50px;
+    border: 1px solid gray;
+    font-size: 18px;
+    padding-left: 20px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+
+
+.registerInput:focus{
+    outline: none;
+}
+
+.image-container {
+  background-color: transparent;  /* Ensure the container has a transparent background */
+}
+
+.register-img {
+  background-color: transparent;  /* Ensure the image itself has a transparent background */
+  margin-right: 200px;
+ 
+  width: 400px
+}
