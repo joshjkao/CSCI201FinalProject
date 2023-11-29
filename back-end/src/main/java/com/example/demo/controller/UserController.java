@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,30 +56,35 @@ public class UserController {
 	
 	static class LoginResponse {
 		private boolean success;
-		private Integer user_id;
+		private Long user_id;
+		private String message;
 		
-		LoginResponse(boolean s, Integer uid) {
+		LoginResponse(boolean s, Long uid) {
 			success = s;
 			user_id = uid;
+		}
+		
+		LoginResponse(boolean s, String m) {
+			success = s;
+			message = m;
 		}
 	}
 	
 	@PostMapping(path="/login")
 	public @ResponseBody String loginUser(@RequestBody LoginRequest request) {
 		System.out.println("login");
-		System.out.println(request.email);
-		System.out.println(request.password);
 		
-		// TODO: validate against database
+		List<User> matchingUsers = userService.getByLoginInfo(request.email, request.password);
 		
 		Gson gson = new Gson();
-		if(request.email == null || request.password == null)
-		{		
-			return gson.toJson(new LoginResponse(false, null));
+		if(request.email == null || request.password == null) {		
+			return gson.toJson(new LoginResponse(false, "Please fill in all fields"));
 		}
-		else
-		{
-			return gson.toJson(new LoginResponse(true, 1));
+		else if (matchingUsers.isEmpty()) {
+			return gson.toJson(new LoginResponse(false, "Invalid login info."));
+		}
+		else {
+			return gson.toJson(new LoginResponse(true, matchingUsers.get(0).getID()));
 		}
 	}
 	

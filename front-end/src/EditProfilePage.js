@@ -1,7 +1,18 @@
 import React from "react";
 import "./editprofilepage.css";
 
-export const EditProfilePage = ({user}) => {
+export const EditProfilePage = ({userID}) => {
+    const user = {
+          id: 0,
+          username: "marco",
+          bio:"hi,im marco paolieri, i have a dog",
+          followers:21,
+          following:20,
+          password: "1234",
+          email: "mail@mail.com",
+          profile_picture: "https://qed.usc.edu/paolieri/marco_paolieri.jpg",
+        }
+
   return (
     <div className="edit-profile-container">
         <div className="picture-container">

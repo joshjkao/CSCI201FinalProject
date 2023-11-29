@@ -10,7 +10,7 @@ import Register from './Register.jsx';
 import Login from './Login.jsx';
 
 function App() {
-  const [activeUser, setActiveUser] = useState(null);
+  const [activeUserID, setActiveUserID] = useState(null);
 
   function logIn(user) {
     fetch("http://localhost:8080/login/login",{
@@ -22,16 +22,16 @@ function App() {
     .then(response => response.json())
     .then(result => {
       if (result.success) {
-        alert(result.user_id);
+        setActiveUserID(result.user_id);
       } else {
-        alert("invalid login");
+        alert(result.message);
       }
     });
   };
 
   return (
     <>
-      {activeUser == null ? 
+      {activeUserID == null ? 
         <Router>
           <Routes>
             <Route path="/" element={<Login logIn={logIn}/>} />
@@ -45,9 +45,9 @@ function App() {
               <Routes>
                   <Route path="/" element={<FeedPage />} />
                   <Route path="/explore" element={<FeedPage />} />
-                  <Route path="/profile" element={<ProfilePage user={activeUser}/>} />
+                  <Route path="/profile" element={<ProfilePage userID={activeUserID}/>} />
                   <Route path="/upload" element={<UploadPage />} />
-                  <Route path="/edit" element={<EditProfilePage user={activeUser}/>} />
+                  <Route path="/edit" element={<EditProfilePage userID={activeUserID}/>} />
               </Routes>
           </div>
         </Router>

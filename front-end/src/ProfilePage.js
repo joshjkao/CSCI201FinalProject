@@ -2,7 +2,7 @@ import React from "react";
 
 import MyPost from "./MyPost";
 
-function ProfilePage({user}) {
+function ProfilePage({userID}) {
     const data = [
         {
             id: 1234,
@@ -71,6 +71,17 @@ function ProfilePage({user}) {
         likes: 40,
       }
     ]
+
+    const user = {
+      id: 0,
+      username: "marco",
+      bio:"hi,im marco paolieri, i have a dog",
+      followers:21,
+      following:20,
+      password: "1234",
+      email: "mail@mail.com",
+      profile_picture: "https://qed.usc.edu/paolieri/marco_paolieri.jpg",
+    }
 
   return (
     <div>
