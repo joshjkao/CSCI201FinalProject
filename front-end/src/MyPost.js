@@ -6,17 +6,17 @@ function MyPost({ user, posts }) {
     
     <div className="whole"> 
       <div className="head">
-        <img src={user.profile_picture} className="profileimage" alt="Profile" />
+        <img src={user.profilePic} className="profileimage" alt="Profile" />
       </div>
 
       <div className="follow">
-          <div className="followers">Followers: {user.followers}</div>
-          <div className="following">Following: {user.following}</div>
+          <div className="followers">Followers: 12</div>
+          <div className="following">Following: 13</div>
           <div className="info-box">
             <span>{user.username}</span>
             <br />
             <br />
-            <span>{user.bio}</span>
+            {/* <span>{user.bio}</span> */}
           </div>
       </div>
 
@@ -39,7 +39,7 @@ function MyPost({ user, posts }) {
               </div>
             </text>
 
-            <img className="post-pic" src={post.pic} alt={`Post ${index + 1}`} />
+            <img className="post-pic" src={post.postImage} alt={`Post ${index + 1}`} />
 
             <br />  <br />
               <div className="post-pox">

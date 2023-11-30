@@ -98,9 +98,5 @@ public class UserController {
 	public @ResponseBody User getUser(@RequestBody Long user_id) {
 		return userService.getByUserId(user_id);
 	}
-	
-	
-	
-	
 
 }

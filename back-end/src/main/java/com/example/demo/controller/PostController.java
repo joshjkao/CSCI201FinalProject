@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -56,9 +57,10 @@ public class PostController {
 		return test;
 	}
 	
-	public @ResponseBody String home() {
-		System.out.println("asdlfkjadskf");
-		return "\"Hello World!\"";
+	@PostMapping(path="/userposts")
+	public @ResponseBody String userPosts(@RequestBody Long user_id) {
+		List<Post> posts = postService.getUserPosts(user_id);
+		return new Gson().toJson(posts);
 	}
 	
 	
