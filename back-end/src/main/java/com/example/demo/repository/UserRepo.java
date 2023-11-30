@@ -10,6 +10,10 @@ import com.example.demo.model.User;
 
 
 public interface UserRepo extends JpaRepository<User, Integer>{
-    @Query("SELECT * FROM user WHERE email = :email AND password = :password")
-    List<User> findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
+
+	List<User> findByEmailAndPassword(String email, String password);
+//    @Query("SELECT * FROM user WHERE email = :email AND password = :password")
+//    List<User> findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
+
+	User findByUserId(Long user_id);
 }

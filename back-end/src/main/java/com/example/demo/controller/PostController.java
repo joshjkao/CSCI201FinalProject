@@ -1,10 +1,13 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.model.Post;
 import com.example.demo.model.User;
 import com.example.demo.service.PostService;
+import com.google.gson.Gson;
 
 
 @Controller
@@ -45,14 +49,18 @@ public class PostController {
 	
 	
 	
-	@PostMapping(path="/start")
-//	public @ResponseBody Iterable<Post> homepage() {
-//		
-//		return postService.getAllPosts();
-//	}
-	public @ResponseBody String home() {
-		System.out.println("asdlfkjadskf");
-		return "\"Hello World!\"";
+	@GetMapping(path="/display")
+	public @ResponseBody String homepage() {
+		List<Post> posts = postService.getAllPosts();
+		String test = new Gson().toJson(posts);
+//		System.out.println(test);
+		return test;
+	}
+	
+	@PostMapping(path="/userposts")
+	public @ResponseBody String userPosts(@RequestBody Long user_id) {
+		List<Post> posts = postService.getUserPosts(user_id);
+		return new Gson().toJson(posts);
 	}
 	
 	

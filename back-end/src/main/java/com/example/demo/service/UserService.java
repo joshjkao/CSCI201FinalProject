@@ -22,6 +22,9 @@ public class UserService {
 		return userRepo.findByEmailAndPassword(email, password);
 	}
 	
+	public User getByUserId(Long user_id) {
+		return userRepo.findByUserId(user_id);
+	}
 	// Get all following associated with user
 
 }
