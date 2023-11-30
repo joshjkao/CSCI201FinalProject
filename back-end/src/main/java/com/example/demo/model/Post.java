@@ -17,12 +17,17 @@ public class Post {
 	private String animal;
 	private String postImage;
 	private int likes;
+	private String caption;
 	
 	public Post(long userId, String animal, int likes, String postImage) {
 		this.userId = userId;
 		this.likes = likes;
 		this.postImage = postImage;
 		this.animal = animal;
+	}
+	
+	Post() {
+		
 	}
 
 }

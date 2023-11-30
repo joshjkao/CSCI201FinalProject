@@ -94,6 +94,11 @@ public class UserController {
 //		return userRepo.findALL();
 //	}
 	
+	@PostMapping(path="/user")
+	public @ResponseBody User getUser(@RequestBody Long user_id) {
+		return userService.getByUserId(user_id);
+	}
+	
 	
 	
 	

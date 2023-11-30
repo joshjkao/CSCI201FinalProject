@@ -20,5 +20,6 @@ public class PostService {
 		
 		return postRepo.findAll();
 	}
+	
 
 }

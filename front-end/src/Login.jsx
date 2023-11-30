@@ -67,7 +67,7 @@ const Login = ({logIn}) => {
       <div className="loginRight">
         <div className="loginBox">
           <input placeholder="Email" className="loginInput" onChange={handleUsernameChange}/>
-          <input placeholder="Password" className="loginInput" onChange={handlePasswordChange}/>
+          <input type="password" placeholder="Password" className="loginInput" onChange={handlePasswordChange}/>
           <button className='loginButton' onClick={handleLoginClick}>Log in</button>
           <span className='loginForgot'>Forgot Password?</span>
           <Link to="/signup" className='loginRegisterButtonWrapper'>

@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.example.demo.model.Post;
 import com.example.demo.model.User;
 import com.example.demo.service.PostService;
+import com.google.gson.Gson;
 
 
 @Controller
@@ -45,11 +48,14 @@ public class PostController {
 	
 	
 	
-	@PostMapping(path="/start")
-//	public @ResponseBody Iterable<Post> homepage() {
-//		
-//		return postService.getAllPosts();
-//	}
+	@GetMapping(path="/display")
+	public @ResponseBody String homepage() {
+		List<Post> posts = postService.getAllPosts();
+		String test = new Gson().toJson(posts);
+//		System.out.println(test);
+		return test;
+	}
+	
 	public @ResponseBody String home() {
 		System.out.println("asdlfkjadskf");
 		return "\"Hello World!\"";
