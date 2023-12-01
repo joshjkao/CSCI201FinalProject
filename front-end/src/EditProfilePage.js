@@ -1,24 +1,51 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./editprofilepage.css";
 
-export const EditProfilePage = ({userID}) => {
-    const user = {
-          id: 0,
-          username: "marco",
-          bio:"hi,im marco paolieri, i have a dog",
-          followers:21,
-          following:20,
-          password: "1234",
-          email: "mail@mail.com",
-          profile_picture: "https://qed.usc.edu/paolieri/marco_paolieri.jpg",
-        }
+export const EditProfilePage = ({userId}) => {
+
+    const emptyUser = {
+        userId: -1,
+        username: "",
+        password: "",
+        email: "",
+        profilePic: ""
+      }
+
+    const [user, setUser] = useState(emptyUser);
+    const [imageUrl, setImageUrl] = useState("");
+
+    const handleUrlChange = (e) => {
+        setImageUrl(e.target.value);
+    }
+
+    const handleSaveChanges = () => {
+        const request = {userId, imageUrl};
+        fetch("http://localhost:8080/login/update",{
+          method: "post",
+          headers: {"Content-Type": "application/json"
+        },
+        body: JSON.stringify(request)
+        });
+    }
+
+    useEffect(() => {
+        fetch("http://localhost:8080/login/user",{
+          method: "post",
+          headers: {"Content-Type": "application/json"
+        },
+        body: JSON.stringify(userId)
+        })
+        .then(result => result.json())
+        .then(res => {
+          setUser(res);
+          console.log(res);
+        });
+      }, []);
 
   return (
     <div className="edit-profile-container">
         <div className="picture-container">
-            <img src={user.profile_picture} className="edit-picture" alt=""></img>
-            <input type="file" id="image" accept="image/*"/>
-            <span className="edit-picture-button">Edit</span>
+            <img src={user.profilePic} className="edit-picture" alt=""></img>
         </div>
         <div className="input-field-container">
             <span>Username</span>
@@ -30,6 +57,12 @@ export const EditProfilePage = ({userID}) => {
             <span>Email</span>
             <div className="input-field">
                 <input type="text" defaultValue={user.email} className="edit-input"></input>
+            </div>
+        </div>
+        <div className="input-field-container">
+            <span>Change Profile Picture</span>
+            <div className="input-field">
+                <input type="text" className="edit-input" onChange={handleUrlChange}></input>
             </div>
         </div>
         <div className="input-field-container">

@@ -23,8 +23,14 @@ public class UserService {
 	}
 	
 	public User getByUserId(Long user_id) {
-		return userRepo.findByUserId(user_id);
+		System.out.println("service" + user_id);
+		User temp = userRepo.findByUserId(user_id);
+		System.out.println(temp.getProfilePic());
+		return temp;
 	}
-	// Get all following associated with user
+	
+	// public void updateProfilePicByUserId(Long user_id, String profile_pic) {
+	// 	userRepo.updateProfilePicByUserId(user_id, profile_pic);
+	// }
 
 }

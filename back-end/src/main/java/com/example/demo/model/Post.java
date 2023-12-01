@@ -15,15 +15,16 @@ public class Post {
 	private long postId;
 	private long userId;
 	private String animal;
-	private String postImage;
+	private String postUrl;
 	private int likes;
 	private String caption;
 	
-	public Post(long userId, String animal, int likes, String postImage) {
+	public Post(String animal, int likes, String postUrl, String caption, long userId) {
 		this.userId = userId;
 		this.likes = likes;
-		this.postImage = postImage;
+		this.postUrl = postUrl;
 		this.animal = animal;
+		this.caption = caption;
 	}
 	
 	Post() {

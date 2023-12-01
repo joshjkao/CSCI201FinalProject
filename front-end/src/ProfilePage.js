@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 
 import MyPost from "./MyPost";
 
-function ProfilePage({userID}) {
+function ProfilePage({userId}) {
   const emptyUser = {
     userId: -1,
     username: "",
@@ -19,7 +19,7 @@ function ProfilePage({userID}) {
       method: "post",
       headers: {"Content-Type": "application/json"
     },
-    body: JSON.stringify(userID)
+    body: JSON.stringify(userId)
     })
     .then(result => result.json())
     .then(res => {
@@ -30,7 +30,7 @@ function ProfilePage({userID}) {
       method: "post",
       headers: {"Content-Type": "application/json"
     },
-    body: JSON.stringify(userID)
+    body: JSON.stringify(userId)
     })
     .then(result => result.json())
     .then(res => {
@@ -41,9 +41,7 @@ function ProfilePage({userID}) {
 
   return (
     <div>
-      {/* {data.map((user)=>( */}
-          <MyPost user={user} posts={posts} />
-        {/* ))} */}
+      <MyPost user={user} posts={posts} />
     </div>
   );
 }

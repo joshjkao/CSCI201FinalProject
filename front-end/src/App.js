@@ -10,7 +10,7 @@ import Register from './Register.jsx';
 import Login from './Login.jsx';
 
 function App() {
-  const [activeUserID, setActiveUserID] = useState(null);
+  const [activeUserId, setActiveUserId] = useState(null);
 
   function logIn(user) {
     fetch("http://localhost:8080/login/login",{
@@ -22,7 +22,7 @@ function App() {
     .then(response => response.json())
     .then(result => {
       if (result.success) {
-        setActiveUserID(result.user_id);
+        setActiveUserId(result.user_id);
       } else {
         alert(result.message);
       }
@@ -31,11 +31,11 @@ function App() {
 
   return (
     <>
-      {activeUserID == null ? 
+      {activeUserId == null ? 
         <Router>
           <Routes>
             <Route path="/" element={<Login logIn={logIn}/>} />
-            <Route path="/signup" element={<Register logIn={logIn}/>} />
+            <Route path="/signup" element={<Register />} />
           </Routes>
         </Router>
         :
@@ -45,9 +45,9 @@ function App() {
               <Routes>
                   <Route path="/" element={<FeedPage />} />
                   <Route path="/explore" element={<FeedPage />} />
-                  <Route path="/profile" element={<ProfilePage userID={activeUserID}/>} />
-                  <Route path="/upload" element={<UploadPage />} />
-                  <Route path="/edit" element={<EditProfilePage userID={activeUserID}/>} />
+                  <Route path="/profile" element={<ProfilePage userId={activeUserId}/>} />
+                  <Route path="/upload" element={<UploadPage userId={activeUserId}/>} />
+                  <Route path="/edit" element={<EditProfilePage userId={activeUserId}/>} />
               </Routes>
           </div>
         </Router>

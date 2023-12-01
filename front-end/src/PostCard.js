@@ -21,7 +21,7 @@ function PostCard({content}) {
     const [commentMessage, setCommentMessage] = useState("");
 
     useEffect(() => {
-        console.log(content);
+        console.log(JSON.stringify(content.userId));
         fetch("http://localhost:8080/login/user",{
             method: "post",
             headers: {"Content-Type": "application/json"
@@ -92,7 +92,7 @@ function PostCard({content}) {
                 <span className="username-text">{user.username}</span>
             </div>
             <div>
-            <img className="post-photo" alt="" src={content.postImage} />
+            <img className="post-photo" alt="" src={content.postUrl} />
             </div>
             <div className="card-button-tray">
                 <button onClick={handleLikeClick} className="card-button">

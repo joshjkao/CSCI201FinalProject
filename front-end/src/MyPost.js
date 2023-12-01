@@ -39,7 +39,7 @@ function MyPost({ user, posts }) {
               </div>
             </text>
 
-            <img className="post-pic" src={post.postImage} alt={`Post ${index + 1}`} />
+            <img className="post-pic" src={post.postUrl} alt={`Post ${index + 1}`} />
 
             <br />  <br />
               <div className="post-pox">

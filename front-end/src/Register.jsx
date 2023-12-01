@@ -4,17 +4,31 @@ import PersonIcon from '@mui/icons-material/Person';
 import EmailIcon from '@mui/icons-material/Email';
 import LockIcon from '@mui/icons-material/Lock';
 import KeyIcon from '@mui/icons-material/Key';
+import { Link } from 'react-router-dom';
 
-const Register = ({logIn}) => {
-  const [firstName, setFirstName] = useState('');
+const Register = ({register}) => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [termsChecked, setTermsChecked] = useState(false);
   const [error, setError] = useState('');
 
+  function registerUser(user){
+    fetch("http://localhost:8080/login/signup", {
+      method:"post",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(user)
+
+    }).then(()=>{
+      console.log("New User Added")
+    })
+    };
+
   const handleRegister = () => {
-    if (!firstName || !email || !password || !repeatPassword) {
+
+
+    if (!username || !email || !password || !repeatPassword) {
       setError('All fields are required');
       return;
     }
@@ -36,16 +50,13 @@ const Register = ({logIn}) => {
 
     setError('');
 
-    logIn({
-      id: 0,
-      username: "marco",
-      bio:"hi,im marco paolieri, i have a dog",
-      followers:21,
-      following:20,
-      password: "1234",
-      email: "mail@mail.com",
-      profile_picture: "https://qed.usc.edu/paolieri/marco_paolieri.jpg",
+
+    registerUser({
+      email,
+      username,
+      password,
     });
+
   };
   return (
     <div className="register">
@@ -56,10 +67,10 @@ const Register = ({logIn}) => {
             <div className="registerName">
             <PersonIcon/>
             <input
-                placeholder="User Name"
+                placeholder="Username"
                 className="registerInput"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             <div className="registerEmail">
@@ -104,9 +115,11 @@ const Register = ({logIn}) => {
                 {error}
               </p>
             )}
-            <button className='registerButton' onClick={handleRegister}>
-              Register
-            </button>
+            <Link to="/">
+              <button className='registerButton' onClick={handleRegister}>
+                Register
+              </button> 
+            </Link>
           </div>
           </div>
         </div>

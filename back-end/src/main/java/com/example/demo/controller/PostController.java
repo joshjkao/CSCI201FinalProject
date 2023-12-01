@@ -26,20 +26,37 @@ public class PostController {
 	@Autowired
 	private PostService postService;
 	
+	static class newPost {
+		private long userId;
+		private String postUrl;
+		private String caption;
+		
+		public String getCaption() {return caption;}
+		public long getUserId() {return userId;}
+		public String getpostUrl() {return postUrl;}
+		public void setUserId(long e) {userId = e;}
+		public void setpostUrl(String p) {postUrl = p;}
+		public void setCaption(String c) {caption = c;}
+	}
+
 	@PostMapping(path="/upload")
-	public @ResponseBody Boolean addNewPost(@RequestParam String userId, @RequestParam String postImage) {
+	public @ResponseBody Boolean addNewPost(@RequestBody newPost post) {
 		
-		
-		if(postImage == null)
-		{		
+		if(post.postUrl == null || post.caption == null)
+		{	
+			System.out.println("NOT WORKING");
+			
 			return false;
 		}
 		else
 		{
+			System.out.println("Done");
+			System.out.println(post.caption);
+			System.out.println(post.postUrl);
+			System.out.println(post.userId);
 			
-//			String animal = PostService.classify;
-//			Post post = new Post(userId, postImage, animal);
-			//userService.saveUser(U);
+			Post P = new Post("dog", 0, post.postUrl, post.caption, post.userId);
+			postService.savePost(P);
 			
 			return true;
 			

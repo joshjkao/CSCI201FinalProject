@@ -24,19 +24,37 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+
+	static class signUpRequest {
+		private String username;
+		private String email;
+		private String password;
+		
+		public String getUsername() {return username;}
+		public String getEmail() {return email;}
+		public String getPassword() {return password;}
+		public void setEmail(String e) {email = e;}
+		public void setPassword(String p) {password = p;}
+		public void setUsername(String u) {username = u;}
+	}
 	
 	@PostMapping(path="/signup")
-	public @ResponseBody Boolean addNewUser(@RequestParam String username, @RequestParam String password, @RequestParam String email, @RequestParam String profilePic) {
+	public @ResponseBody Boolean addNewUser(@RequestBody signUpRequest signup) {
+		System.out.println("register");
 		
-		
-		if(username == null || password == null || email == null || profilePic == null)
-		{		
+		if(signup.username == null || signup.password == null || signup.email == null)
+		{	
+			System.out.print(signup.username);
+			System.out.print(signup.password);
+			System.out.print(signup.email);
+			
 			return false;
 		}
 		else
 		{
-			User U = new User(username, password, email, profilePic);
-			userService.saveUser(U);
+			System.out.println("done");
+			User user = new User(signup.username, signup.password, signup.email);
+			userService.saveUser(user);
 			
 			return true;
 			
@@ -95,8 +113,29 @@ public class UserController {
 //	}
 	
 	@PostMapping(path="/user")
-	public @ResponseBody User getUser(@RequestBody Long user_id) {
-		return userService.getByUserId(user_id);
+	public @ResponseBody String getUser(@RequestBody Long userId) {
+		System.out.println("controller" + userId);
+		String temp = new Gson().toJson(userService.getByUserId(userId));
+		System.out.println(temp);
+		return temp;
+	}
+
+	static class UpdateRequest {
+		private Long userId;
+		private String profilePic;
+
+		public void setUserId(Long u) {userId = u;}
+		public void setProfilePic(String s) {profilePic = s;}
+		public Long getUserId() {return userId;}
+		public String getProfilePic() {return profilePic;}
+	}
+
+	@PostMapping(path="update")
+	public @ResponseBody void updateProfilePic(@RequestBody UpdateRequest request) {
+		Long userId = request.getUserId();
+		String profilePic = request.getProfilePic();
+
+		// userService.updateProfilePicByUserId(userId, profilePic);
 	}
 
 }

@@ -36,11 +36,11 @@ public class User {
 		profilePic = null;
 	}
 	
-	public User(String username, String password, String email, String profilePic) {
+	public User(String username, String password, String email) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
-		this.profilePic = profilePic;
+		this.profilePic = "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png";
 	}
 
 }
