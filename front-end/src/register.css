@@ -64,7 +64,14 @@
     margin-bottom: 30px;
 }
 
+.termsCheckbox {
+  display: flex;
+  align-items: center;
+}
 
+.checkBoxLabel {
+  width: 80%;
+}
 
 .registerInput:focus{
     outline: none;
@@ -79,4 +86,10 @@
   margin-right: 200px;
  
   width: 400px
+}
+
+.register-button-wrapper {
+  width: 100%;
+  margin-left: 20%;
+  margin-right: auto;
 }

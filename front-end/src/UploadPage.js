@@ -52,7 +52,7 @@ const UploadPost = ({userId}) => {
               id="postText"
               value={caption}
               onChange={handleTextChange}
-              placeholder="Upload a new post for your dog here! "
+              placeholder="Upload a new post here! "
             />
           </div>
           <div>

@@ -108,14 +108,14 @@ const Register = ({register}) => {
                 checked={termsChecked}
                 onChange={() => setTermsChecked(!termsChecked)}
               />
-              <span> I agree to the terms and conditions of PetaByte.</span>
+              <span className='checkBoxLabel'> I agree to the terms and conditions of PetaByte.</span>
             </div>
             {error && (
               <p className="errorText" style={{ marginBottom: '15px', color: 'red', fontWeight: 'bold' }}>
                 {error}
               </p>
             )}
-            <Link to="/">
+            <Link to="/" className='register-button-wrapper'>
               <button className='registerButton' onClick={handleRegister}>
                 Register
               </button> 
