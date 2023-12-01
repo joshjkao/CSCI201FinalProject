@@ -2,8 +2,8 @@ package com.example.demo.repository;
 
 import java.util.List;
 
-import org.springframework.data.jdbc.repository.query.Modifying;
-import org.springframework.data.jdbc.repository.query.Query;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -25,8 +25,8 @@ public interface UserRepo extends JpaRepository<User, Long>{
     // @Transactional
     // void updateProfilePicByUserId(Long userId, String profilePic);
 
-	// @Modifying
-	// @Transactional
-	// @Query("UPDATE User u SET u.profile_pic= :profile_pic WHERE u.user_id = :user_id")
-	void updateProfilePicByUserId(String profilePic, Long userId);
+	@Transactional
+    @Modifying
+    @Query("UPDATE User u SET u.profilePic = :profilePic WHERE u.userId = :userId")
+    void updateProfilePic(@Param("userId") Long userId, @Param("profilePic") String profilePic);
 }

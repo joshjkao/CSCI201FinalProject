@@ -122,12 +122,12 @@ public class UserController {
 
 	static class UpdateRequest {
 		private Long userId;
-		private String profilePic;
+		private String imageUrl;
 
 		public void setUserId(Long u) {userId = u;}
-		public void setProfilePic(String s) {profilePic = s;}
+		public void setImageUrl(String s) {imageUrl = s;}
 		public Long getUserId() {return userId;}
-		public String getProfilePic() {return profilePic;}
+		public String getProfilePic() {return imageUrl;}
 	}
 
 	@PostMapping(path="update")
@@ -135,7 +135,7 @@ public class UserController {
 		Long userId = request.getUserId();
 		String profilePic = request.getProfilePic();
 
-		// userService.updateProfilePicByUserId(userId, profilePic);
+		userService.updateProfilePicByUserId(userId, profilePic);
 	}
 
 }

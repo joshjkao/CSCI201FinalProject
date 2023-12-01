@@ -20,11 +20,25 @@ export const EditProfilePage = ({userId}) => {
 
     const handleSaveChanges = () => {
         const request = {userId, imageUrl};
+        console.log(request);
         fetch("http://localhost:8080/login/update",{
           method: "post",
           headers: {"Content-Type": "application/json"
         },
         body: JSON.stringify(request)
+        })
+        .then(() => {
+            fetch("http://localhost:8080/login/user",{
+                method: "post",
+                headers: {"Content-Type": "application/json"
+            },
+            body: JSON.stringify(userId)
+            })
+            .then(result => result.json())
+            .then(res => {
+            setUser(res);
+            console.log(res);
+            });
         });
     }
 
@@ -78,7 +92,7 @@ export const EditProfilePage = ({userId}) => {
             </div>
         </div>
         <div className="edit-button-container">
-            <button className="edit-button">Save Changes</button>
+            <button className="edit-button" onClick={handleSaveChanges}>Save Changes</button>
         </div>
     </div>
   );

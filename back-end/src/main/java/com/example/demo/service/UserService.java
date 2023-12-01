@@ -29,8 +29,8 @@ public class UserService {
 		return temp;
 	}
 	
-	// public void updateProfilePicByUserId(Long user_id, String profile_pic) {
-	// 	userRepo.updateProfilePicByUserId(user_id, profile_pic);
-	// }
+	public void updateProfilePicByUserId(Long user_id, String profile_pic) {
+		userRepo.updateProfilePic(user_id, profile_pic);
+	}
 
 }
